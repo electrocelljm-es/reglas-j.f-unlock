@@ -122,30 +122,45 @@
         }
 
         /* ============================================= */
-        /* BLOQUE: TARJETA DE BIENVENIDA (WELCOME CARD)   */
+        /* BLOQUE: TABLA DE BIENVENIDA (NUEVO DISEÑO ULTRAFINO) */
         /* ============================================= */
-        .welcome-card {
+        .welcome-table {
             background: rgba(18, 25, 40, 0.75);
             backdrop-filter: blur(10px);
-            border-radius: 2rem;
-            padding: 1.8rem 2rem;
+            border-radius: 1.5rem;
             margin: 2rem 0 2rem;
             border: 1px solid rgba(0, 255, 255, 0.3);
             box-shadow: 0 20px 35px -12px rgba(0,0,0,0.4);
-            transition: all 0.2s;
+            overflow: hidden;
         }
-
-        .welcome-text {
-            font-size: 1.1rem;
+        .welcome-row {
+            display: flex;
+            flex-wrap: wrap;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.15);
+        }
+        .welcome-row:last-child {
+            border-bottom: none;
+        }
+        .welcome-icon-col {
+            flex: 0 0 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 160, 255, 0.1);
+            font-size: 1.6rem;
+            padding: 1rem 0;
+        }
+        .welcome-content-col {
+            flex: 1;
+            padding: 1rem 1.2rem;
+        }
+        .welcome-content-col p {
+            margin-bottom: 0.5rem;
             line-height: 1.5;
-            color: #f0f6ff;
         }
-
-        .welcome-text p {
-            margin-bottom: 0.8rem;
+        .welcome-content-col p:last-child {
+            margin-bottom: 0;
         }
-
-        /* Texto rojo para la frase de eliminación */
         .text-danger-red {
             color: #ff4444;
             font-weight: 700;
@@ -154,14 +169,14 @@
             padding: 0.1rem 0.3rem;
             border-radius: 8px;
         }
-
         .staff-note {
             background: #111a28;
             border-left: 5px solid #1e90ff;
-            padding: 1rem 1.5rem;
-            border-radius: 1.2rem;
-            margin-top: 1rem;
+            padding: 0.8rem 1.2rem;
+            border-radius: 1rem;
+            margin: 0.5rem 0.8rem 0.8rem 0.8rem;
             font-weight: 500;
+            font-size: 0.9rem;
         }
 
         /* ============================================= */
@@ -373,7 +388,6 @@
         /* BLOQUE: ESCRITORIO - MANTIENE EXACTAMENTE EL DISEÑO ORIGINAL */
         /* ======================================================= */
         @media (min-width: 721px) {
-            /* Todo se conserva igual que el original */
             .container {
                 padding: 2rem 1.5rem 5rem;
             }
@@ -386,14 +400,14 @@
             .staff-card {
                 width: 240px;
             }
-            /* En escritorio las tarjetas se mantienen como están (una por fila flexible pero centradas) */
             .staff-grid {
                 justify-content: center;
             }
         }
 
         /* ============================================= */
-        /* BLOQUE: MÓVIL ULTRAFINO - SECCIÓN STAFF EN 2 COLUMNAS HORIZONTALES */
+        /* BLOQUE: MÓVIL ULTRAFINO - SECCIÓN STAFF EN 2 COLUMNAS */
+        /* Y TABLA DE BIENVENIDA COMPACTA                */
         /* ============================================= */
         @media (max-width: 720px) {
             .container {
@@ -417,20 +431,23 @@
                 font-size: 0.9rem;
                 padding: 0.2rem 1rem;
             }
-            .welcome-card {
-                padding: 1rem 1.2rem;
-                margin: 1rem 0;
-                border-radius: 1.5rem;
+            /* Tabla bienvenida ultrafina móvil */
+            .welcome-icon-col {
+                flex: 0 0 45px;
+                font-size: 1.2rem;
+                padding: 0.8rem 0;
             }
-            .welcome-text {
-                font-size: 0.9rem;
+            .welcome-content-col {
+                padding: 0.8rem 1rem;
             }
-            .welcome-text p {
-                margin-bottom: 0.6rem;
+            .welcome-content-col p {
+                font-size: 0.85rem;
+                margin-bottom: 0.4rem;
             }
             .staff-note {
-                padding: 0.7rem 1rem;
-                font-size: 0.85rem;
+                padding: 0.6rem 1rem;
+                font-size: 0.8rem;
+                margin: 0.3rem 0.5rem 0.5rem 0.5rem;
             }
             h2 {
                 font-size: 1.4rem !important;
@@ -476,7 +493,6 @@
                 font-size: 1.2rem;
                 margin-bottom: 0.8rem;
             }
-            /* Grid en móvil: 2 columnas horizontales */
             .staff-grid {
                 display: grid;
                 grid-template-columns: repeat(2, 1fr);
@@ -485,7 +501,6 @@
                 justify-items: center;
                 align-items: stretch;
             }
-            /* Tarjetas ultrafinas, ocupan todo el ancho de su celda */
             .staff-card {
                 width: 100%;
                 max-width: none;
@@ -512,14 +527,12 @@
             .staff-card .wa-staff-btn i {
                 font-size: 0.7rem;
             }
-            /* Icono corona más pequeño en móvil */
             .staff-card .fa-crown, .founder-card i:first-child {
                 font-size: 1.3rem !important;
             }
             .staff-card i.fa-user-shield {
                 font-size: 1.2rem;
             }
-            /* Ajuste texto de párrafo final del staff */
             .staff-section > p {
                 font-size: 0.6rem;
                 margin-top: 0.6rem;
@@ -539,7 +552,6 @@
             }
         }
         
-        /* Pantallas extra pequeñas (menos de 480px) ajuste adicional sin borrar nada */
         @media (max-width: 480px) {
             .container {
                 padding: 0.6rem 0.7rem 2rem;
@@ -550,7 +562,6 @@
             .rule-text {
                 font-size: 0.8rem;
             }
-            /* En móvil muy pequeño, mantener 2 columnas pero más compacto */
             .staff-card h4 {
                 font-size: 0.75rem;
             }
@@ -560,6 +571,13 @@
             .staff-card .wa-staff-btn {
                 font-size: 0.55rem;
                 padding: 0.2rem 0.4rem;
+            }
+            .welcome-icon-col {
+                flex: 0 0 40px;
+                font-size: 1rem;
+            }
+            .welcome-content-col p {
+                font-size: 0.8rem;
             }
         }
     </style>
@@ -589,15 +607,32 @@
     </div>
 
     <!-- ============================================= -->
-    <!-- BLOQUE: TARJETA DE BIENVENIDA (CORREGIDA)     -->
+    <!-- BLOQUE: TABLA DE BIENVENIDA (NUEVO DISEÑO ULTRAFINO) -->
     <!-- ============================================= -->
-    <div class="welcome-card">
-        <div class="welcome-text">
-            <p><strong>✨ Bienvenido al grupo J.F UNLOCK SOLO TECNICOS</strong></p>
-            <!-- FRASE EN ROJO: "Si alguno las incumple, será eliminado inmediatamente." -->
-            <p>📌 Recuerden respetar las <strong>Políticas & Reglas del grupo</strong>. <span class="text-danger-red">Si alguno las incumple, será eliminado inmediatamente.</span></p>
-            <p>🤝 En nombre del <strong>Staff Técnico J.F Unlock</strong> te damos la cordial bienvenida. Este espacio está diseñado para crecer juntos, compartir conocimiento técnico y brindar soporte remoto de calidad.</p>
-            <p>⚠️ Te invitamos a leer <strong>detalladamente</strong> cada una de las reglas y políticas. Mantener el orden y respeto fortalece nuestra comunidad de técnicos a nivel mundial.</p>
+    <div class="welcome-table">
+        <div class="welcome-row">
+            <div class="welcome-icon-col"><i class="fas fa-star-of-life" style="color: #00e0ff;"></i></div>
+            <div class="welcome-content-col">
+                <p><strong>✨ Bienvenido al grupo J.F UNLOCK SOLO TECNICOS</strong></p>
+            </div>
+        </div>
+        <div class="welcome-row">
+            <div class="welcome-icon-col"><i class="fas fa-gavel" style="color: #ffaa44;"></i></div>
+            <div class="welcome-content-col">
+                <p>📌 Recuerden respetar las <strong>Políticas & Reglas del grupo</strong>. <span class="text-danger-red">Si alguno las incumple, será eliminado inmediatamente.</span></p>
+            </div>
+        </div>
+        <div class="welcome-row">
+            <div class="welcome-icon-col"><i class="fas fa-handshake" style="color: #6fcf97;"></i></div>
+            <div class="welcome-content-col">
+                <p>🤝 En nombre del <strong>Staff Técnico J.F Unlock</strong> te damos la cordial bienvenida. Este espacio está diseñado para crecer juntos, compartir conocimiento técnico y brindar soporte remoto de calidad.</p>
+            </div>
+        </div>
+        <div class="welcome-row">
+            <div class="welcome-icon-col"><i class="fas fa-book-open" style="color: #f39c12;"></i></div>
+            <div class="welcome-content-col">
+                <p>⚠️ Te invitamos a leer <strong>detalladamente</strong> cada una de las reglas y políticas. Mantener el orden y respeto fortalece nuestra comunidad de técnicos a nivel mundial.</p>
+            </div>
         </div>
         <div class="staff-note">
             <i class="fas fa-info-circle" style="color:#3b82f6;"></i> 💡 Recuerda: La ayuda es gratuita entre técnicos, compartimos experiencia. Apoyémonos profesionalmente.
@@ -681,6 +716,7 @@
 
     <!-- ============================================= -->
     <!-- BLOQUE: STAFF (FUNDADOR + CO-ADMINISTRADORES)  -->
+    <!-- LA ÚLTIMA TARJETA APARECE CENTRADA EN ESCRITORIO -->
     <!-- ============================================= -->
     <div class="staff-section">
         <div class="staff-title"><i class="fab fa-whatsapp"></i> Propietario & Staff Autorizado</div>
@@ -692,7 +728,7 @@
                 <div class="staff-role">Fundador & Administrador Principal</div>
                 <a href="https://wa.me/18299778417?text=Hola%20J.F%20Unlock%20-%20Consulta%20Staff" target="_blank" class="wa-staff-btn"><i class="fab fa-whatsapp"></i> WhatsApp</a>
             </div>
-            <!-- Co-Administradores con sus respectivos nombres y botón (números corregidos formato válido) -->
+            <!-- Co-Administradores -->
             <div class="staff-card">
                 <i class="fas fa-user-shield"></i>
                 <h4>@electrocelljm.es</h4>
@@ -743,62 +779,47 @@
 <!-- ============================================= -->
 <script>
     (function() {
-        // 1. Deshabilitar clic derecho completamente
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
             return false;
         });
-
-        // 2. Deshabilitar combinaciones de teclado para copiar, guardar, ver código, etc.
         document.addEventListener('keydown', function(e) {
-            // Bloquear Ctrl+Shift+I / Ctrl+Shift+J / Ctrl+Shift+C / F12 (herramientas desarrollador)
             if (e.key === 'F12' || 
                 (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) ||
-                (e.ctrlKey && e.key === 'u')) {  // Ctrl+U para ver fuente
+                (e.ctrlKey && e.key === 'u')) {
                 e.preventDefault();
                 return false;
             }
-            // Bloquear Ctrl+C (copia) y Ctrl+X (cortar) y Ctrl+V (pegar) opcional, pero para evitar copia textual.
             if ((e.ctrlKey && (e.key === 'c' || e.key === 'C')) ||
                 (e.ctrlKey && (e.key === 'x' || e.key === 'X')) ||
                 (e.ctrlKey && (e.key === 'v' || e.key === 'V'))) {
                 e.preventDefault();
                 return false;
             }
-            // Bloquear Ctrl+S (guardar página)
             if (e.ctrlKey && (e.key === 's' || e.key === 'S')) {
                 e.preventDefault();
                 return false;
             }
         });
-
-        // 3. Deshabilitar selección de texto vía ratón (ya aplicado por CSS pero reforzamos)
         document.addEventListener('selectstart', function(e) {
             e.preventDefault();
             return false;
         });
-
-        // 4. Deshabilitar arrastre de imágenes o elementos (protección extra)
         document.querySelectorAll('img, a').forEach(el => {
             el.addEventListener('dragstart', (e) => {
                 e.preventDefault();
                 return false;
             });
         });
-
-        // 5. Evitar que se pueda abrir el inspector desde el menú contextual de desarrollador (medida extra)
         window.addEventListener('keydown', function(e) {
-            if (e.ctrlKey && e.shiftKey && e.keyCode === 73) { // Ctrl+Shift+I
+            if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
                 e.preventDefault();
             }
-            if (e.ctrlKey && e.keyCode === 85) { // Ctrl+U
+            if (e.ctrlKey && e.keyCode === 85) {
                 e.preventDefault();
             }
         });
-
-        // 6. El zoom táctil o con teclado queda permitido: no se bloquea Ctrl+ + / Ctrl -  
-        // Tampoco se bloquea el gesto táctil de pellizco, gracias a user-scalable=yes en meta viewport.
-        console.log("Protección activada: clic derecho y copia deshabilitados. Zoom permitido. Móvil: staff ultrafino en 2 columnas.");
+        console.log("Protección activada. Diseño premium - Bienvenida tipo tabla ultrafina - Staff con última tarjeta centrada.");
     })();
 </script>
 </body>
