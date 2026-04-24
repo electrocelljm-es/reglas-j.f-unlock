@@ -217,16 +217,35 @@
             font-size: 1rem;
             font-weight: 500;
             line-height: 1.4;
+            color: #eef2ff; /* Texto blanco/gris claro por defecto */
         }
 
         .rule-text strong, .rule-text .highlight {
             font-weight: 700;
         }
 
-        /* colores dinamicos por clase */
-        .prohibido { color: #ff7b72; border-left-color: #ff4d4d; }
-        .permitido { color: #9bff9e; border-left-color: #2ecc71; }
-        .advertencia { color: #ffb347; border-left-color: #ffaa33; }
+        /* SOLO LA PALABRA "Prohibido" se colorea en rojo, el resto del texto queda normal */
+        .prohibido-text {
+            color: #ff4444;
+            font-weight: 700;
+        }
+        
+        /* Texto permitido en verde solo la palabra */
+        .permitido-text {
+            color: #6fcf97;
+            font-weight: 700;
+        }
+        
+        /* Texto advertencia en ámbar solo la palabra clave */
+        .advertencia-text {
+            color: #ffb347;
+            font-weight: 700;
+        }
+
+        /* Colores de bordes e íconos se mantienen para identificar categorías */
+        .prohibido { border-left-color: #ff4d4d; }
+        .permitido { border-left-color: #2ecc71; }
+        .advertencia { border-left-color: #ffaa33; }
 
         .prohibido .rule-icon { color: #ff6b6b; }
         .permitido .rule-icon { color: #6fcf97; }
@@ -431,7 +450,6 @@
                 font-size: 0.9rem;
                 padding: 0.2rem 1rem;
             }
-            /* Tabla bienvenida ultrafina móvil */
             .welcome-icon-col {
                 flex: 0 0 45px;
                 font-size: 1.2rem;
@@ -481,9 +499,6 @@
                 font-size: 1.4rem;
             }
             
-            /* ========================================= */
-            /* SECCIÓN STAFF: ULTRA FINA + 2 COLUMNAS    */
-            /* ========================================= */
             .staff-section {
                 padding: 0.8rem 0.5rem;
                 margin: 1.2rem 0;
@@ -607,7 +622,7 @@
     </div>
 
     <!-- ============================================= -->
-    <!-- BLOQUE: TABLA DE BIENVENIDA (NUEVO DISEÑO ULTRAFINO) -->
+    <!-- BLOQUE: TABLA DE BIENVENIDA                   -->
     <!-- ============================================= -->
     <div class="welcome-table">
         <div class="welcome-row">
@@ -640,58 +655,59 @@
     </div>
 
     <!-- ============================================= -->
-    <!-- BLOQUE: REGLAS Y POLÍTICAS (CON COLORES)       -->
+    <!-- BLOQUE: REGLAS Y POLÍTICAS                    -->
+    <!-- SOLO LA PALABRA "Prohibido" aparece en ROJO   -->
     <!-- ============================================= -->
     <h2 style="font-size: 1.8rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;"><i class="fas fa-gavel"></i> Reglas & Políticas</h2>
     <div class="rules-grid">
-        <!-- 🚫 PROHIBIDOS (Rojo) -->
+        <!-- 🚫 PROHIBIDOS - Solo la palabra "Prohibido" en rojo -->
         <div class="rule-item prohibido">
             <div class="rule-icon"><i class="fas fa-ban"></i></div>
-            <div class="rule-text"><strong>Prohibido</strong> publicar precios en el Grupo.</div>
+            <div class="rule-text"><span class="prohibido-text">Prohibido</span> publicar precios en el Grupo.</div>
         </div>
         <div class="rule-item prohibido">
             <div class="rule-icon"><i class="fas fa-ban"></i></div>
-            <div class="rule-text"><strong>Prohibido</strong> comercializar servicios, a excepción de tener permiso por parte del <span class="staff-autorizado">Staff</span>.</div>
+            <div class="rule-text"><span class="prohibido-text">Prohibido</span> comercializar servicios, a excepción de tener permiso por parte del <span class="staff-autorizado">Staff</span>.</div>
         </div>
         <div class="rule-item prohibido">
             <div class="rule-icon"><i class="fas fa-user-slash"></i></div>
-            <div class="rule-text"><strong>Prohibido</strong> para los integrantes ofrecer servicios fuera o dentro del grupo. Contamos con un sistema de trabajo para detectar lo mencionado.</div>
+            <div class="rule-text"><span class="prohibido-text">Prohibido</span> para los integrantes ofrecer servicios fuera o dentro del grupo. Contamos con un sistema de trabajo para detectar lo mencionado.</div>
         </div>
         <div class="rule-item prohibido">
             <div class="rule-icon"><i class="fas fa-comment-slash"></i></div>
-            <div class="rule-text"><strong>Prohibido</strong> insultos, falta de respeto o burlas a colegas con menor conocimiento en algún tema que se esté tratando.</div>
+            <div class="rule-text"><span class="prohibido-text">Prohibido</span> insultos, falta de respeto o burlas a colegas con menor conocimiento en algún tema que se esté tratando.</div>
         </div>
         <div class="rule-item prohibido">
             <div class="rule-icon"><i class="fas fa-tools"></i></div>
-            <div class="rule-text"><strong>Prohibido</strong> solicitar la herramienta que soporta un proceso, sin antes indicar con qué herramientas ya lo trabajó. <br> <span style="font-size:0.85rem; opacity:0.9;">(Debe especificar los errores que le presenta para poder apoyarlo)</span></div>
+            <div class="rule-text"><span class="prohibido-text">Prohibido</span> solicitar la herramienta que soporta un proceso, sin antes indicar con qué herramientas ya lo trabajó. <br> <span style="font-size:0.85rem; opacity:0.9;">(Debe especificar los errores que le presenta para poder apoyarlo)</span></div>
         </div>
         <div class="rule-item prohibido">
             <div class="rule-icon"><i class="fas fa-microchip"></i></div>
-            <div class="rule-text"><strong>Prohibido</strong> abordar temas de cambio de IMEI.</div>
+            <div class="rule-text"><span class="prohibido-text">Prohibido</span> abordar temas de cambio de IMEI.</div>
         </div>
         <div class="rule-item prohibido">
             <div class="rule-icon"><i class="fas fa-link"></i></div>
-            <div class="rule-text"><strong>Prohibido</strong> publicar enlaces (links) de otros grupos, webs de ventas o Reseller en el grupo.</div>
+            <div class="rule-text"><span class="prohibido-text">Prohibido</span> publicar enlaces (links) de otros grupos, webs de ventas o Reseller en el grupo.</div>
         </div>
         <div class="rule-item prohibido">
             <div class="rule-icon"><i class="fas fa-mobile-alt"></i></div>
-            <div class="rule-text"><strong>Prohibido</strong> para los integrantes solicitar un IMEI para verificar el estado de un equipo.</div>
+            <div class="rule-text"><span class="prohibido-text">Prohibido</span> para los integrantes solicitar un IMEI para verificar el estado de un equipo.</div>
         </div>
         
-        <!-- ✅ Permitido (VERDE) -->
+        <!-- ✅ Permitido - Palabra "Permitido" en verde -->
         <div class="rule-item permitido">
             <div class="rule-icon"><i class="fas fa-check-circle"></i></div>
-            <div class="rule-text"><strong>Permitido</strong> decir la herramienta con la que se hace un proceso, pero no diga el consumo de Créditos. Para eso está la página del soporte.</div>
+            <div class="rule-text"><span class="permitido-text">Permitido</span> decir la herramienta con la que se hace un proceso, pero no diga el consumo de Créditos. Para eso está la página del soporte.</div>
         </div>
         <div class="rule-item permitido">
             <div class="rule-icon"><i class="fas fa-hand-holding-heart"></i></div>
-            <div class="rule-text"><strong>La ayuda es gratuita</strong> dentro del Grupo de ayuda para Técnicos. Compartimos conocimiento y experiencia.</div>
+            <div class="rule-text"><span class="permitido-text">La ayuda es gratuita</span> dentro del Grupo de ayuda para Técnicos. Compartimos conocimiento y experiencia.</div>
         </div>
         
-        <!-- ⚠️ ADVERTENCIAS / AVISOS (ámbar) -->
+        <!-- ⚠️ ADVERTENCIAS - Texto clave en ámbar -->
         <div class="rule-item advertencia">
             <div class="rule-icon"><i class="fas fa-exclamation-triangle"></i></div>
-            <div class="rule-text"><strong>Solo el Administrador y el Staff autorizado</strong> puede ofrecer servicios que alguien ocupa (licencias, créditos, remotos, etc.). Si algún integrante compra un servicio a otra persona que no sea parte del <span class="staff-autorizado">Staff Autorizado</span>, <strong>no somos responsables de estafas</strong>.</div>
+            <div class="rule-text"><span class="advertencia-text">Solo el Administrador y el Staff autorizado</span> puede ofrecer servicios que alguien ocupa (licencias, créditos, remotos, etc.). Si algún integrante compra un servicio a otra persona que no sea parte del <span class="staff-autorizado">Staff Autorizado</span>, <strong>no somos responsables de estafas</strong>.</div>
         </div>
         <div class="rule-item advertencia">
             <div class="rule-icon"><i class="fas fa-users"></i></div>
@@ -716,19 +732,16 @@
 
     <!-- ============================================= -->
     <!-- BLOQUE: STAFF (FUNDADOR + CO-ADMINISTRADORES)  -->
-    <!-- LA ÚLTIMA TARJETA APARECE CENTRADA EN ESCRITORIO -->
     <!-- ============================================= -->
     <div class="staff-section">
         <div class="staff-title"><i class="fab fa-whatsapp"></i> Propietario & Staff Autorizado</div>
         <div class="staff-grid">
-            <!-- Fundador y Admin principal @J.F Unlock -->
             <div class="staff-card founder-card">
                 <i class="fas fa-crown" style="font-size: 2rem; color: gold;"></i>
                 <h4>J.F Unlock</h4>
                 <div class="staff-role">Fundador & Administrador Principal</div>
                 <a href="https://wa.me/18299778417?text=Hola%20J.F%20Unlock%20-%20Consulta%20Staff" target="_blank" class="wa-staff-btn"><i class="fab fa-whatsapp"></i> WhatsApp</a>
             </div>
-            <!-- Co-Administradores -->
             <div class="staff-card">
                 <i class="fas fa-user-shield"></i>
                 <h4>@electrocelljm.es</h4>
@@ -774,8 +787,7 @@
 </a>
 
 <!-- ============================================= -->
-<!-- BLOQUE: SCRIPT DE PROTECCIÓN (CLICK DERECHO,  -->
-<!-- COPIADO, TECLAS, PERMITIR ZOOM Y DISPOSITIVO)  -->
+<!-- BLOQUE: SCRIPT DE PROTECCIÓN                   -->
 <!-- ============================================= -->
 <script>
     (function() {
@@ -819,7 +831,7 @@
                 e.preventDefault();
             }
         });
-        console.log("Protección activada. Diseño premium - Bienvenida tipo tabla ultrafina - Staff con última tarjeta centrada.");
+        console.log("Protección activada - Solo la palabra 'Prohibido' aparece en rojo.");
     })();
 </script>
 </body>
