@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>J.F UNLOCK SOLO TÉCNICOS | Reglas Oficiales</title>
+    <!-- Google Fonts + Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ============================================= */
+        /* BLOQUE: RESETEO Y ESTILOS BASE                 */
+        /* ============================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            /* Prevenir selección de texto y arrastre (protección copia) */
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        /* Permitir selección en campos input y textarea si existieran (no hay, pero por robustez) */
+        input, textarea {
+            user-select: text;
+            -webkit-user-select: text;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(145deg, #0a0c12 0%, #11161f 100%);
+            color: #eef2ff;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* ============================================= */
+        /* BLOQUE: FONDOS DECORATIVOS                     */
+        /* ============================================= */
+        .bg-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .bg-shapes .shape {
+            position: absolute;
+            background: radial-gradient(circle, rgba(0, 255, 255, 0.08) 0%, rgba(0, 0, 0, 0) 70%);
+            border-radius: 50%;
+            filter: blur(60px);
+        }
+
+        .shape-1 { width: 500px; height: 500px; top: -150px; left: -150px; background: radial-gradient(circle, rgba(0, 255, 200, 0.1), transparent);}
+        .shape-2 { width: 600px; height: 600px; bottom: -200px; right: -150px; background: radial-gradient(circle, rgba(0, 160, 255, 0.08), transparent);}
+        
+        /* ============================================= */
+        /* BLOQUE: CONTENEDOR PRINCIPAL                   */
+        /* ============================================= */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ============================================= */
+        /* BLOQUE: HEADER PREMIUM (HERO)                  */
+        /* ============================================= */
+        .hero {
+            text-align: center;
+            margin-bottom: 2.8rem;
+            padding: 1.2rem 0 1rem;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+            background: rgba(10, 14, 23, 0.6);
+            border-radius: 3rem;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.5);
+        }
+
+        .badge-global {
+            display: inline-block;
+            background: #00c3ff20;
+            backdrop-filter: blur(4px);
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            border: 1px solid #00e0ff60;
+            margin-bottom: 1.2rem;
+        }
+
+        h1 {
+            font-size: 2.7rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FFF, #6ee7ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #b3ecff;
+            background: rgba(0,0,0,0.3);
+            display: inline-block;
+            padding: 0.2rem 1.5rem;
+            border-radius: 50px;
+            backdrop-filter: blur(4px);
+        }
+
+        /* ============================================= */
+        /* BLOQUE: TARJETA DE BIENVENIDA (WELCOME CARD)   */
+        /* ============================================= */
+        .welcome-card {
+            background: rgba(18, 25, 40, 0.75);
+            backdrop-filter: blur(10px);
+            border-radius: 2rem;
+            padding: 1.8rem 2rem;
+            margin: 2rem 0 2rem;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.4);
+            transition: all 0.2s;
+        }
+
+        .welcome-text {
+            font-size: 1.1rem;
+            line-height: 1.5;
+            color: #f0f6ff;
+        }
+
+        .welcome-text p {
+            margin-bottom: 0.8rem;
+        }
+
+        /* Texto rojo para la frase de eliminación */
+        .text-danger-red {
+            color: #ff4444;
+            font-weight: 700;
+            background: rgba(255,0,0,0.15);
+            display: inline-block;
+            padding: 0.1rem 0.3rem;
+            border-radius: 8px;
+        }
+
+        .staff-note {
+            background: #111a28;
+            border-left: 5px solid #1e90ff;
+            padding: 1rem 1.5rem;
+            border-radius: 1.2rem;
+            margin-top: 1rem;
+            font-weight: 500;
+        }
+
+        /* ============================================= */
+        /* BLOQUE: REGLAS Y POLÍTICAS (RULES GRID)        */
+        /* ============================================= */
+        .rules-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+            margin: 2rem 0 2.5rem;
+        }
+
+        .rule-item {
+            background: rgba(12, 18, 28, 0.8);
+            backdrop-filter: blur(4px);
+            border-radius: 1.5rem;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .rule-item:hover {
+            transform: translateX(6px);
+            background: rgba(20, 30, 48, 0.9);
+            border-left: 4px solid;
+        }
+
+        .rule-icon {
+            font-size: 1.6rem;
+            min-width: 2rem;
+            text-align: center;
+        }
+
+        .rule-text {
+            font-size: 1rem;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .rule-text strong, .rule-text .highlight {
+            font-weight: 700;
+        }
+
+        /* colores dinamicos por clase */
+        .prohibido { color: #ff7b72; border-left-color: #ff4d4d; }
+        .permitido { color: #9bff9e; border-left-color: #2ecc71; }
+        .advertencia { color: #ffb347; border-left-color: #ffaa33; }
+
+        .prohibido .rule-icon { color: #ff6b6b; }
+        .permitido .rule-icon { color: #6fcf97; }
+        .advertencia .rule-icon { color: #f39c12; }
+
+        .staff-autorizado {
+            color: #6fcf97;
+            font-weight: 800;
+        }
+
+        /* ============================================= */
+        /* BLOQUE: BOTÓN YOUTUBE PREMIUM                  */
+        /* ============================================= */
+        .youtube-btn-container {
+            text-align: center;
+            margin: 2rem 0 2.5rem;
+        }
+        .btn-youtube {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #ff0000;
+            padding: 0.9rem 2.2rem;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: white;
+            text-decoration: none;
+            transition: all 0.25s;
+            box-shadow: 0 8px 20px rgba(255,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .btn-youtube i {
+            font-size: 1.8rem;
+        }
+        .btn-youtube:hover {
+            transform: scale(1.03);
+            background: #cc0000;
+            box-shadow: 0 12px 28px rgba(255,0,0,0.5);
+        }
+
+        /* ============================================= */
+        /* BLOQUE: STAFF SECTION (CARDS PREMIUM)          */
+        /* ============================================= */
+        .staff-section {
+            background: rgba(0, 0, 0, 0.45);
+            backdrop-filter: blur(12px);
+            border-radius: 2rem;
+            padding: 1.5rem 1rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+        }
+        .staff-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+            background: linear-gradient(120deg, #fff, #5dade2);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .staff-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.8rem;
+            margin: 1.5rem 0 1rem;
+        }
+        .staff-card {
+            background: #0f172ad9;
+            border-radius: 1.8rem;
+            padding: 1rem 1.5rem 1.2rem;
+            width: 240px;
+            text-align: center;
+            transition: all 0.2s;
+            border: 1px solid rgba(72, 187, 255, 0.3);
+            backdrop-filter: blur(4px);
+        }
+        .staff-card h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 0.4rem 0 0.2rem;
+            color: white;
+        }
+        .staff-role {
+            font-size: 0.75rem;
+            background: #1f3a5f;
+            display: inline-block;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+        .staff-card .wa-staff-btn {
+            background: #25D366;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #fff;
+            text-decoration: none;
+            margin-top: 0.5rem;
+            transition: 0.2s;
+        }
+        .staff-card .wa-staff-btn:hover {
+            background: #128C7E;
+            transform: scale(1.02);
+        }
+        .founder-card {
+            background: linear-gradient(145deg, #143250, #0a1422);
+            border: 1px solid #ffd966;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+        }
+
+        /* ============================================= */
+        /* BLOQUE: BOTÓN FLOTANTE WHATSAPP                */
+        /* ============================================= */
+        .float-whatsapp {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+            transition: all 0.2s;
+            z-index: 999;
+            text-decoration: none;
+        }
+        .float-whatsapp:hover {
+            background-color: #128C7E;
+            transform: scale(1.08);
+        }
+
+        /* ============================================= */
+        /* BLOQUE: FOOTER                                */
+        /* ============================================= */
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            font-size: 0.8rem;
+            opacity: 0.7;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+        }
+
+        /* ============================================= */
+        /* BLOQUE: MEDIA QUERIES (RESPONSIVE)            */
+        /* ============================================= */
+        @media (max-width: 720px) {
+            .container { padding: 1rem; }
+            h1 { font-size: 1.8rem; }
+            .rule-item { padding: 0.8rem 1rem; }
+            .staff-card { width: 100%; max-width: 260px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ============================================= -->
+<!-- BLOQUE: FONDOS DECORATIVOS (SHAPES)           -->
+<!-- ============================================= -->
+<div class="bg-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+</div>
+
+<!-- ============================================= -->
+<!-- BLOQUE: CONTENIDO PRINCIPAL (CONTAINER)       -->
+<!-- ============================================= -->
+<div class="container">
+    
+    <!-- ============================================= -->
+    <!-- BLOQUE: HEADER / HERO                         -->
+    <!-- ============================================= -->
+    <div class="hero">
+        <div class="badge-global"><i class="fas fa-shield-alt"></i> SOPORTE TÉCNICO MUNDIAL</div>
+        <h1>J.F UNLOCK <span style="color:#3cc7ff;">SOLO TECNICOS</span></h1>
+        <div class="subtitle"><i class="fas fa-globe-americas"></i> Soporte Remoto Mundial</div>
+    </div>
+
+    <!-- ============================================= -->
+    <!-- BLOQUE: TARJETA DE BIENVENIDA (CORREGIDA)     -->
+    <!-- ============================================= -->
+    <div class="welcome-card">
+        <div class="welcome-text">
+            <p><strong>✨ Bienvenido al grupo J.F UNLOCK SOLO TECNICOS</strong></p>
+            <!-- FRASE EN ROJO: "Si alguno las incumple, será eliminado inmediatamente." -->
+            <p>📌 Recuerden respetar las <strong>Políticas & Reglas del grupo</strong>. <span class="text-danger-red">Si alguno las incumple, será eliminado inmediatamente.</span></p>
+            <p>🤝 En nombre del <strong>Staff Técnico J.F Unlock</strong> te damos la cordial bienvenida. Este espacio está diseñado para crecer juntos, compartir conocimiento técnico y brindar soporte remoto de calidad.</p>
+            <p>⚠️ Te invitamos a leer <strong>detalladamente</strong> cada una de las reglas y políticas. Mantener el orden y respeto fortalece nuestra comunidad de técnicos a nivel mundial.</p>
+        </div>
+        <div class="staff-note">
+            <i class="fas fa-info-circle" style="color:#3b82f6;"></i> 💡 Recuerda: La ayuda es gratuita entre técnicos, compartimos experiencia. Apoyémonos profesionalmente.
+        </div>
+    </div>
+
+    <!-- ============================================= -->
+    <!-- BLOQUE: REGLAS Y POLÍTICAS (CON COLORES)       -->
+    <!-- ============================================= -->
+    <h2 style="font-size: 1.8rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;"><i class="fas fa-gavel"></i> Reglas & Políticas</h2>
+    <div class="rules-grid">
+        <!-- 🚫 PROHIBIDOS (Rojo) -->
+        <div class="rule-item prohibido">
+            <div class="rule-icon"><i class="fas fa-ban"></i></div>
+            <div class="rule-text"><strong>Prohibido</strong> publicar precios en el Grupo.</div>
+        </div>
+        <div class="rule-item prohibido">
+            <div class="rule-icon"><i class="fas fa-ban"></i></div>
+            <div class="rule-text"><strong>Prohibido</strong> comercializar servicios, a excepción de tener permiso por parte del <span class="staff-autorizado">Staff</span>.</div>
+        </div>
+        <div class="rule-item prohibido">
+            <div class="rule-icon"><i class="fas fa-user-slash"></i></div>
+            <div class="rule-text"><strong>Prohibido</strong> para los integrantes ofrecer servicios fuera o dentro del grupo. Contamos con un sistema de trabajo para detectar lo mencionado.</div>
+        </div>
+        <div class="rule-item prohibido">
+            <div class="rule-icon"><i class="fas fa-comment-slash"></i></div>
+            <div class="rule-text"><strong>Prohibido</strong> insultos, falta de respeto o burlas a colegas con menor conocimiento en algún tema que se esté tratando.</div>
+        </div>
+        <div class="rule-item prohibido">
+            <div class="rule-icon"><i class="fas fa-tools"></i></div>
+            <div class="rule-text"><strong>Prohibido</strong> solicitar la herramienta que soporta un proceso, sin antes indicar con qué herramientas ya lo trabajó. <br> <span style="font-size:0.85rem; opacity:0.9;">(Debe especificar los errores que le presenta para poder apoyarlo)</span></div>
+        </div>
+        <div class="rule-item prohibido">
+            <div class="rule-icon"><i class="fas fa-microchip"></i></div>
+            <div class="rule-text"><strong>Prohibido</strong> abordar temas de cambio de IMEI.</div>
+        </div>
+        <div class="rule-item prohibido">
+            <div class="rule-icon"><i class="fas fa-link"></i></div>
+            <div class="rule-text"><strong>Prohibido</strong> publicar enlaces (links) de otros grupos, webs de ventas o Reseller en el grupo.</div>
+        </div>
+        <div class="rule-item prohibido">
+            <div class="rule-icon"><i class="fas fa-mobile-alt"></i></div>
+            <div class="rule-text"><strong>Prohibido</strong> para los integrantes solicitar un IMEI para verificar el estado de un equipo.</div>
+        </div>
+        
+        <!-- ✅ Permitido (VERDE) -->
+        <div class="rule-item permitido">
+            <div class="rule-icon"><i class="fas fa-check-circle"></i></div>
+            <div class="rule-text"><strong>Permitido</strong> decir la herramienta con la que se hace un proceso, pero no diga el consumo de Créditos. Para eso está la página del soporte.</div>
+        </div>
+        <div class="rule-item permitido">
+            <div class="rule-icon"><i class="fas fa-hand-holding-heart"></i></div>
+            <div class="rule-text"><strong>La ayuda es gratuita</strong> dentro del Grupo de ayuda para Técnicos. Compartimos conocimiento y experiencia.</div>
+        </div>
+        
+        <!-- ⚠️ ADVERTENCIAS / AVISOS (ámbar) -->
+        <div class="rule-item advertencia">
+            <div class="rule-icon"><i class="fas fa-exclamation-triangle"></i></div>
+            <div class="rule-text"><strong>Solo el Administrador y el Staff autorizado</strong> puede ofrecer servicios que alguien ocupa (licencias, créditos, remotos, etc.). Si algún integrante compra un servicio a otra persona que no sea parte del <span class="staff-autorizado">Staff Autorizado</span>, <strong>no somos responsables de estafas</strong>.</div>
+        </div>
+        <div class="rule-item advertencia">
+            <div class="rule-icon"><i class="fas fa-users"></i></div>
+            <div class="rule-text">Los que quieran brindar ayudas a otros integrantes del grupo, deben hacerlo de manera <strong>pública dentro del grupo</strong>.</div>
+        </div>
+        <div class="rule-item advertencia">
+            <div class="rule-icon"><i class="fas fa-flag"></i></div>
+            <div class="rule-text">Reporte al <strong>Staff</strong> cualquier anomalía que afecte al Gremio de Técnicos.</div>
+        </div>
+    </div>
+
+    <!-- ============================================= -->
+    <!-- BLOQUE: BOTÓN YOUTUBE PROFESIONAL              -->
+    <!-- ============================================= -->
+    <div class="youtube-btn-container">
+        <a href="https://www.youtube.com/@J.FUnlock?sub_confirmation=1" target="_blank" class="btn-youtube">
+            <i class="fab fa-youtube"></i> SUSCRÍBETE
+            <i class="fas fa-bell"></i>
+        </a>
+        <p style="font-size:0.75rem; margin-top: 0.6rem;">🔔 Canal oficial - Tutoriales y soporte técnico</p>
+    </div>
+
+    <!-- ============================================= -->
+    <!-- BLOQUE: STAFF (FUNDADOR + CO-ADMINISTRADORES)  -->
+    <!-- ============================================= -->
+    <div class="staff-section">
+        <div class="staff-title"><i class="fab fa-whatsapp"></i> Equipo Directivo & Staff Autorizado</div>
+        <div class="staff-grid">
+            <!-- Fundador y Admin principal @J.F Unlock -->
+            <div class="staff-card founder-card">
+                <i class="fas fa-crown" style="font-size: 2rem; color: gold;"></i>
+                <h4>J.F Unlock</h4>
+                <div class="staff-role">Fundador & Administrador Principal</div>
+                <a href="https://wa.me/5491123456789?text=Hola%20J.F%20Unlock%20-%20Consulta%20Staff" target="_blank" class="wa-staff-btn"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            </div>
+            <!-- Co-Administradores con sus respectivos nombres y botón -->
+            <div class="staff-card">
+                <i class="fas fa-user-shield"></i>
+                <h4>@electrocelljm.es</h4>
+                <div class="staff-role">Co-Administrador</div>
+                <a href="https://wa.me/5491123456780?text=Hola%20electrocelljm.es%20Staff" target="_blank" class="wa-staff-btn"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            </div>
+            <div class="staff-card">
+                <i class="fas fa-user-shield"></i>
+                <h4>@Edisson</h4>
+                <div class="staff-role">Co-Administrador</div>
+                <a href="https://wa.me/5491123456781?text=Hola%20Edisson%20Staff" target="_blank" class="wa-staff-btn"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            </div>
+            <div class="staff-card">
+                <i class="fas fa-user-shield"></i>
+                <h4>@Jose Ariel</h4>
+                <div class="staff-role">Co-Administrador</div>
+                <a href="https://wa.me/5491123456782?text=Hola%20Jose%20Ariel" target="_blank" class="wa-staff-btn"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            </div>
+            <div class="staff-card">
+                <i class="fas fa-user-shield"></i>
+                <h4>@Miguel</h4>
+                <div class="staff-role">Co-Administrador</div>
+                <a href="https://wa.me/5491123456783?text=Hola%20Miguel%20Staff" target="_blank" class="wa-staff-btn"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            </div>
+        </div>
+        <p style="text-align: center; font-size: 0.75rem; margin-top: 1rem;"><i class="fas fa-shield-alt"></i> Solo el Staff Autorizado está facultado para ofrecer servicios. Contacta directamente por WhatsApp.</p>
+    </div>
+
+    <!-- ============================================= -->
+    <!-- BLOQUE: FOOTER                                -->
+    <!-- ============================================= -->
+    <footer>
+        <p>© 2025 J.F UNLOCK SOLO TECNICOS — Soporte Remoto Mundial | Respeto, profesionalismo y conocimiento técnico compartido.</p>
+        <p style="margin-top: 0.5rem;">🔧 Reglas actualizadas - Infringir alguna norma deriva en expulsión inmediata.</p>
+    </footer>
+</div>
+
+<!-- ============================================= -->
+<!-- BLOQUE: BOTÓN WHATSAPP FLOTANTE GENERAL        -->
+<!-- ============================================= -->
+<a href="https://wa.me/5491123456789?text=Hola%20Staff%20J.F%20Unlock%20-%20Leer%20Reglas" class="float-whatsapp" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- ============================================= -->
+<!-- BLOQUE: SCRIPT DE PROTECCIÓN (CLICK DERECHO,  -->
+<!-- COPIADO, TECLAS, PERMITIR ZOOM Y DISPOSITIVO)  -->
+<!-- ============================================= -->
+<script>
+    (function() {
+        // 1. Deshabilitar clic derecho completamente
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        });
+
+        // 2. Deshabilitar combinaciones de teclado para copiar, guardar, ver código, etc.
+        document.addEventListener('keydown', function(e) {
+            // Bloquear Ctrl+Shift+I / Ctrl+Shift+J / Ctrl+Shift+C / F12 (herramientas desarrollador)
+            if (e.key === 'F12' || 
+                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) ||
+                (e.ctrlKey && e.key === 'u')) {  // Ctrl+U para ver fuente
+                e.preventDefault();
+                return false;
+            }
+            // Bloquear Ctrl+C (copia) y Ctrl+X (cortar) y Ctrl+V (pegar) opcional, pero para evitar copia textual.
+            if ((e.ctrlKey && (e.key === 'c' || e.key === 'C')) ||
+                (e.ctrlKey && (e.key === 'x' || e.key === 'X')) ||
+                (e.ctrlKey && (e.key === 'v' || e.key === 'V'))) {
+                e.preventDefault();
+                return false;
+            }
+            // Bloquear Ctrl+S (guardar página)
+            if (e.ctrlKey && (e.key === 's' || e.key === 'S')) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // 3. Deshabilitar selección de texto vía ratón (ya aplicado por CSS pero reforzamos)
+        document.addEventListener('selectstart', function(e) {
+            e.preventDefault();
+            return false;
+        });
+
+        // 4. Deshabilitar arrastre de imágenes o elementos (protección extra)
+        document.querySelectorAll('img, a').forEach(el => {
+            el.addEventListener('dragstart', (e) => {
+                e.preventDefault();
+                return false;
+            });
+        });
+
+        // 5. Evitar que se pueda abrir el inspector desde el menú contextual de desarrollador (medida extra)
+        window.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.shiftKey && e.keyCode === 73) { // Ctrl+Shift+I
+                e.preventDefault();
+            }
+            if (e.ctrlKey && e.keyCode === 85) { // Ctrl+U
+                e.preventDefault();
+            }
+        });
+
+        // 6. El zoom táctil o con teclado queda permitido: no se bloquea Ctrl+ + / Ctrl -  
+        // Tampoco se bloquea el gesto táctil de pellizco, gracias a user-scalable=yes en meta viewport.
+        console.log("Protección activada: clic derecho y copia deshabilitados. Zoom permitido.");
+    })();
+</script>
+</body>
+</html>
