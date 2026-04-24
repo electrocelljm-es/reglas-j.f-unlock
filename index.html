@@ -16,14 +16,12 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            /* Prevenir selección de texto y arrastre (protección copia) */
             user-select: none;
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
         }
 
-        /* Permitir selección en campos input y textarea si existieran (no hay, pero por robustez) */
         input, textarea {
             user-select: text;
             -webkit-user-select: text;
@@ -122,61 +120,103 @@
         }
 
         /* ============================================= */
-        /* BLOQUE: TABLA DE BIENVENIDA (NUEVO DISEÑO ULTRAFINO) */
+        /* BLOQUE: BIENVENIDA - NUEVO DISEÑO MODERNO    */
+        /* Sin bordes de tabla, sin líneas, más limpio  */
         /* ============================================= */
-        .welcome-table {
-            background: rgba(18, 25, 40, 0.75);
-            backdrop-filter: blur(10px);
-            border-radius: 1.5rem;
+        .welcome-modern {
+            background: rgba(12, 20, 30, 0.65);
+            backdrop-filter: blur(12px);
+            border-radius: 2rem;
             margin: 2rem 0 2rem;
-            border: 1px solid rgba(0, 255, 255, 0.3);
-            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.4);
+            border: 1px solid rgba(0, 200, 255, 0.2);
+            box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.4);
+            padding: 1.8rem 2rem;
+            position: relative;
             overflow: hidden;
         }
-        .welcome-row {
-            display: flex;
-            flex-wrap: wrap;
-            border-bottom: 1px solid rgba(0, 255, 255, 0.15);
+        
+        /* Decoración sutil de fondo */
+        .welcome-modern::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -10%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(0, 200, 255, 0.08), transparent);
+            border-radius: 50%;
+            pointer-events: none;
         }
-        .welcome-row:last-child {
-            border-bottom: none;
-        }
-        .welcome-icon-col {
-            flex: 0 0 60px;
+        
+        .welcome-header {
             display: flex;
             align-items: center;
-            justify-content: center;
-            background: rgba(0, 160, 255, 0.1);
-            font-size: 1.6rem;
-            padding: 1rem 0;
+            gap: 12px;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(0, 200, 255, 0.2);
+            padding-bottom: 1rem;
         }
-        .welcome-content-col {
-            flex: 1;
-            padding: 1rem 1.2rem;
-        }
-        .welcome-content-col p {
-            margin-bottom: 0.5rem;
-            line-height: 1.5;
-        }
-        .welcome-content-col p:last-child {
-            margin-bottom: 0;
-        }
-        .text-danger-red {
-            color: #ff4444;
-            font-weight: 700;
-            background: rgba(255,0,0,0.15);
-            display: inline-block;
-            padding: 0.1rem 0.3rem;
-            border-radius: 8px;
-        }
-        .staff-note {
-            background: #111a28;
-            border-left: 5px solid #1e90ff;
-            padding: 0.8rem 1.2rem;
+        
+        .welcome-header i {
+            font-size: 2rem;
+            color: #00e0ff;
+            background: rgba(0, 200, 255, 0.15);
+            padding: 0.6rem;
             border-radius: 1rem;
-            margin: 0.5rem 0.8rem 0.8rem 0.8rem;
-            font-weight: 500;
+        }
+        
+        .welcome-header h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff, #7dd3fc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .welcome-message {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .msg-line {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            font-size: 1rem;
+            line-height: 1.5;
+            padding: 0.25rem 0;
+        }
+        
+        .msg-icon {
+            min-width: 28px;
+            font-size: 1.2rem;
+            text-align: center;
+            margin-top: 2px;
+        }
+        
+        .msg-text {
+            flex: 1;
+        }
+        
+        .text-danger-red {
+            color: #ff5555;
+            font-weight: 700;
+            background: rgba(255, 68, 68, 0.12);
+            display: inline-block;
+            padding: 0.1rem 0.4rem;
+            border-radius: 20px;
+        }
+        
+        .welcome-footer-note {
+            background: rgba(0, 100, 255, 0.12);
+            border-left: 3px solid #1e90ff;
+            padding: 0.9rem 1.2rem;
+            border-radius: 1rem;
+            margin-top: 1.2rem;
             font-size: 0.9rem;
+            font-weight: 500;
         }
 
         /* ============================================= */
@@ -217,32 +257,28 @@
             font-size: 1rem;
             font-weight: 500;
             line-height: 1.4;
-            color: #eef2ff; /* Texto blanco/gris claro por defecto */
+            color: #eef2ff;
         }
 
         .rule-text strong, .rule-text .highlight {
             font-weight: 700;
         }
 
-        /* SOLO LA PALABRA "Prohibido" se colorea en rojo, el resto del texto queda normal */
         .prohibido-text {
-            color: #ff4444;
+            color: #ff5555;
             font-weight: 700;
         }
         
-        /* Texto permitido en verde solo la palabra */
         .permitido-text {
             color: #6fcf97;
             font-weight: 700;
         }
         
-        /* Texto advertencia en ámbar solo la palabra clave */
         .advertencia-text {
             color: #ffb347;
             font-weight: 700;
         }
 
-        /* Colores de bordes e íconos se mantienen para identificar categorías */
         .prohibido { border-left-color: #ff4d4d; }
         .permitido { border-left-color: #2ecc71; }
         .advertencia { border-left-color: #ffaa33; }
@@ -288,7 +324,7 @@
         }
 
         /* ============================================= */
-        /* BLOQUE: STAFF SECTION (CARDS PREMIUM)          */
+        /* BLOQUE: STAFF SECTION                         */
         /* ============================================= */
         .staff-section {
             background: rgba(0, 0, 0, 0.45);
@@ -391,9 +427,6 @@
             transform: scale(1.08);
         }
 
-        /* ============================================= */
-        /* BLOQUE: FOOTER                                */
-        /* ============================================= */
         footer {
             text-align: center;
             margin-top: 3rem;
@@ -403,9 +436,9 @@
             padding-top: 2rem;
         }
 
-        /* ======================================================= */
-        /* BLOQUE: ESCRITORIO - MANTIENE EXACTAMENTE EL DISEÑO ORIGINAL */
-        /* ======================================================= */
+        /* ============================================= */
+        /* ESCRITORIO - DISEÑO ORIGINAL                  */
+        /* ============================================= */
         @media (min-width: 721px) {
             .container {
                 padding: 2rem 1.5rem 5rem;
@@ -419,14 +452,10 @@
             .staff-card {
                 width: 240px;
             }
-            .staff-grid {
-                justify-content: center;
-            }
         }
 
         /* ============================================= */
-        /* BLOQUE: MÓVIL ULTRAFINO - SECCIÓN STAFF EN 2 COLUMNAS */
-        /* Y TABLA DE BIENVENIDA COMPACTA                */
+        /* MÓVIL ULTRAFINO                               */
         /* ============================================= */
         @media (max-width: 720px) {
             .container {
@@ -444,32 +473,42 @@
             }
             h1 {
                 font-size: 1.7rem;
-                letter-spacing: -0.3px;
             }
             .subtitle {
                 font-size: 0.9rem;
                 padding: 0.2rem 1rem;
             }
-            .welcome-icon-col {
-                flex: 0 0 45px;
+            
+            /* Bienvenida moderna responsive */
+            .welcome-modern {
+                padding: 1.2rem 1.2rem;
+                margin: 1rem 0;
+            }
+            .welcome-header {
+                margin-bottom: 1rem;
+                gap: 8px;
+            }
+            .welcome-header i {
+                font-size: 1.4rem;
+                padding: 0.4rem;
+            }
+            .welcome-header h3 {
                 font-size: 1.2rem;
-                padding: 0.8rem 0;
             }
-            .welcome-content-col {
-                padding: 0.8rem 1rem;
-            }
-            .welcome-content-col p {
+            .msg-line {
+                gap: 10px;
                 font-size: 0.85rem;
-                margin-bottom: 0.4rem;
             }
-            .staff-note {
-                padding: 0.6rem 1rem;
+            .msg-icon {
+                font-size: 1rem;
+                min-width: 22px;
+            }
+            .welcome-footer-note {
                 font-size: 0.8rem;
-                margin: 0.3rem 0.5rem 0.5rem 0.5rem;
+                padding: 0.7rem 1rem;
+                margin-top: 0.8rem;
             }
-            h2 {
-                font-size: 1.4rem !important;
-            }
+            
             .rules-grid {
                 gap: 0.7rem;
                 margin: 1.2rem 0 1.5rem;
@@ -485,7 +524,6 @@
             }
             .rule-text {
                 font-size: 0.85rem;
-                line-height: 1.35;
             }
             .youtube-btn-container {
                 margin: 1.2rem 0 1.5rem;
@@ -502,61 +540,32 @@
             .staff-section {
                 padding: 0.8rem 0.5rem;
                 margin: 1.2rem 0;
-                border-radius: 1.5rem;
             }
             .staff-title {
                 font-size: 1.2rem;
-                margin-bottom: 0.8rem;
             }
             .staff-grid {
                 display: grid;
                 grid-template-columns: repeat(2, 1fr);
                 gap: 0.7rem;
                 margin: 0.8rem 0 0.5rem;
-                justify-items: center;
-                align-items: stretch;
             }
             .staff-card {
                 width: 100%;
-                max-width: none;
                 padding: 0.6rem 0.5rem;
                 border-radius: 1.2rem;
-                margin: 0;
             }
             .staff-card h4 {
                 font-size: 0.85rem;
-                margin: 0.2rem 0 0.1rem;
-                word-break: break-word;
             }
             .staff-role {
                 font-size: 0.55rem;
                 padding: 0.1rem 0.4rem;
-                margin-bottom: 0.3rem;
             }
             .staff-card .wa-staff-btn {
                 padding: 0.25rem 0.5rem;
                 font-size: 0.6rem;
                 gap: 4px;
-                margin-top: 0.3rem;
-            }
-            .staff-card .wa-staff-btn i {
-                font-size: 0.7rem;
-            }
-            .staff-card .fa-crown, .founder-card i:first-child {
-                font-size: 1.3rem !important;
-            }
-            .staff-card i.fa-user-shield {
-                font-size: 1.2rem;
-            }
-            .staff-section > p {
-                font-size: 0.6rem;
-                margin-top: 0.6rem;
-            }
-            
-            footer {
-                margin-top: 1.5rem;
-                font-size: 0.7rem;
-                padding-top: 1rem;
             }
             .float-whatsapp {
                 width: 50px;
@@ -574,46 +583,23 @@
             h1 {
                 font-size: 1.5rem;
             }
-            .rule-text {
-                font-size: 0.8rem;
-            }
             .staff-card h4 {
                 font-size: 0.75rem;
-            }
-            .staff-role {
-                font-size: 0.5rem;
-            }
-            .staff-card .wa-staff-btn {
-                font-size: 0.55rem;
-                padding: 0.2rem 0.4rem;
-            }
-            .welcome-icon-col {
-                flex: 0 0 40px;
-                font-size: 1rem;
-            }
-            .welcome-content-col p {
-                font-size: 0.8rem;
             }
         }
     </style>
 </head>
 <body>
 
-<!-- ============================================= -->
-<!-- BLOQUE: FONDOS DECORATIVOS (SHAPES)           -->
-<!-- ============================================= -->
 <div class="bg-shapes">
     <div class="shape shape-1"></div>
     <div class="shape shape-2"></div>
 </div>
 
-<!-- ============================================= -->
-<!-- BLOQUE: CONTENIDO PRINCIPAL (CONTAINER)       -->
-<!-- ============================================= -->
 <div class="container">
     
     <!-- ============================================= -->
-    <!-- BLOQUE: HEADER / HERO                         -->
+    <!-- HEADER / HERO                                  -->
     <!-- ============================================= -->
     <div class="hero">
         <div class="badge-global"><i class="fas fa-shield-alt"></i> SOPORTE TÉCNICO MUNDIAL</div>
@@ -622,45 +608,42 @@
     </div>
 
     <!-- ============================================= -->
-    <!-- BLOQUE: TABLA DE BIENVENIDA                   -->
+    <!-- NUEVO BLOQUE DE BIENVENIDA - MODERNO Y LIMPIO -->
     <!-- ============================================= -->
-    <div class="welcome-table">
-        <div class="welcome-row">
-            <div class="welcome-icon-col"><i class="fas fa-star-of-life" style="color: #00e0ff;"></i></div>
-            <div class="welcome-content-col">
-                <p><strong>✨ Bienvenido al grupo J.F UNLOCK SOLO TECNICOS</strong></p>
+    <div class="welcome-modern">
+        <div class="welcome-header">
+            <i class="fas fa-hand-peace"></i>
+            <h3>Bienvenido, Técnico</h3>
+        </div>
+        <div class="welcome-message">
+            <div class="msg-line">
+                <div class="msg-icon"><i class="fas fa-users" style="color: #00e0ff;"></i></div>
+                <div class="msg-text"><strong>✨ J.F UNLOCK SOLO TECNICOS</strong> — Tu comunidad técnica global.</div>
+            </div>
+            <div class="msg-line">
+                <div class="msg-icon"><i class="fas fa-gavel" style="color: #ffaa44;"></i></div>
+                <div class="msg-text">📌 Recuerda respetar las <strong>Políticas & Reglas del grupo</strong>. <span class="text-danger-red">Si alguno las incumple, será eliminado inmediatamente.</span></div>
+            </div>
+            <div class="msg-line">
+                <div class="msg-icon"><i class="fas fa-handshake" style="color: #6fcf97;"></i></div>
+                <div class="msg-text">🤝 En nombre del <strong>Staff Técnico J.F Unlock</strong> te damos la cordial bienvenida. Este espacio está diseñado para crecer juntos, compartir conocimiento técnico y brindar soporte remoto de calidad.</div>
+            </div>
+            <div class="msg-line">
+                <div class="msg-icon"><i class="fas fa-book-open" style="color: #f39c12;"></i></div>
+                <div class="msg-text">⚠️ Te invitamos a leer <strong>detalladamente</strong> cada una de las reglas y políticas. Mantener el orden y el respeto fortalece a toda nuestra comunidad.</div>
             </div>
         </div>
-        <div class="welcome-row">
-            <div class="welcome-icon-col"><i class="fas fa-gavel" style="color: #ffaa44;"></i></div>
-            <div class="welcome-content-col">
-                <p>📌 Recuerden respetar las <strong>Políticas & Reglas del grupo</strong>. <span class="text-danger-red">Si alguno las incumple, será eliminado inmediatamente.</span></p>
-            </div>
-        </div>
-        <div class="welcome-row">
-            <div class="welcome-icon-col"><i class="fas fa-handshake" style="color: #6fcf97;"></i></div>
-            <div class="welcome-content-col">
-                <p>🤝 En nombre del <strong>Staff Técnico J.F Unlock</strong> te damos la cordial bienvenida. Este espacio está diseñado para crecer juntos, compartir conocimiento técnico y brindar soporte remoto de calidad.</p>
-            </div>
-        </div>
-        <div class="welcome-row">
-            <div class="welcome-icon-col"><i class="fas fa-book-open" style="color: #f39c12;"></i></div>
-            <div class="welcome-content-col">
-                <p>⚠️ Te invitamos a leer <strong>detalladamente</strong> cada una de las reglas y políticas. Mantener el orden y respeto fortalece nuestra comunidad de técnicos a nivel mundial.</p>
-            </div>
-        </div>
-        <div class="staff-note">
-            <i class="fas fa-info-circle" style="color:#3b82f6;"></i> 💡 Recuerda: La ayuda es gratuita entre técnicos, compartimos experiencia. Apoyémonos profesionalmente.
+        <div class="welcome-footer-note">
+            <i class="fas fa-lightbulb" style="color:#3b82f6; margin-right: 8px;"></i> 💡 La ayuda es gratuita entre técnicos. Compartimos experiencia y nos apoyamos profesionalmente.
         </div>
     </div>
 
     <!-- ============================================= -->
-    <!-- BLOQUE: REGLAS Y POLÍTICAS                    -->
-    <!-- SOLO LA PALABRA "Prohibido" aparece en ROJO   -->
+    <!-- REGLAS Y POLÍTICAS                             -->
     <!-- ============================================= -->
     <h2 style="font-size: 1.8rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;"><i class="fas fa-gavel"></i> Reglas & Políticas</h2>
     <div class="rules-grid">
-        <!-- 🚫 PROHIBIDOS - Solo la palabra "Prohibido" en rojo -->
+        <!-- 🚫 PROHIBIDOS -->
         <div class="rule-item prohibido">
             <div class="rule-icon"><i class="fas fa-ban"></i></div>
             <div class="rule-text"><span class="prohibido-text">Prohibido</span> publicar precios en el Grupo.</div>
@@ -694,7 +677,7 @@
             <div class="rule-text"><span class="prohibido-text">Prohibido</span> para los integrantes solicitar un IMEI para verificar el estado de un equipo.</div>
         </div>
         
-        <!-- ✅ Permitido - Palabra "Permitido" en verde -->
+        <!-- ✅ Permitido -->
         <div class="rule-item permitido">
             <div class="rule-icon"><i class="fas fa-check-circle"></i></div>
             <div class="rule-text"><span class="permitido-text">Permitido</span> decir la herramienta con la que se hace un proceso, pero no diga el consumo de Créditos. Para eso está la página del soporte.</div>
@@ -704,7 +687,7 @@
             <div class="rule-text"><span class="permitido-text">La ayuda es gratuita</span> dentro del Grupo de ayuda para Técnicos. Compartimos conocimiento y experiencia.</div>
         </div>
         
-        <!-- ⚠️ ADVERTENCIAS - Texto clave en ámbar -->
+        <!-- ⚠️ ADVERTENCIAS -->
         <div class="rule-item advertencia">
             <div class="rule-icon"><i class="fas fa-exclamation-triangle"></i></div>
             <div class="rule-text"><span class="advertencia-text">Solo el Administrador y el Staff autorizado</span> puede ofrecer servicios que alguien ocupa (licencias, créditos, remotos, etc.). Si algún integrante compra un servicio a otra persona que no sea parte del <span class="staff-autorizado">Staff Autorizado</span>, <strong>no somos responsables de estafas</strong>.</div>
@@ -720,7 +703,7 @@
     </div>
 
     <!-- ============================================= -->
-    <!-- BLOQUE: BOTÓN YOUTUBE PROFESIONAL              -->
+    <!-- BOTÓN YOUTUBE                                  -->
     <!-- ============================================= -->
     <div class="youtube-btn-container">
         <a href="https://www.youtube.com/@J.FUnlock?sub_confirmation=1" target="_blank" class="btn-youtube">
@@ -731,7 +714,7 @@
     </div>
 
     <!-- ============================================= -->
-    <!-- BLOQUE: STAFF (FUNDADOR + CO-ADMINISTRADORES)  -->
+    <!-- STAFF (FUNDADOR + CO-ADMINISTRADORES)          -->
     <!-- ============================================= -->
     <div class="staff-section">
         <div class="staff-title"><i class="fab fa-whatsapp"></i> Propietario & Staff Autorizado</div>
@@ -771,7 +754,7 @@
     </div>
 
     <!-- ============================================= -->
-    <!-- BLOQUE: FOOTER                                -->
+    <!-- FOOTER                                         -->
     <!-- ============================================= -->
     <footer>
         <p>© 2025 J.F UNLOCK SOLO TECNICOS — Soporte Remoto Mundial | Respeto, profesionalismo y conocimiento técnico compartido.</p>
@@ -780,14 +763,14 @@
 </div>
 
 <!-- ============================================= -->
-<!-- BLOQUE: BOTÓN WHATSAPP FLOTANTE GENERAL        -->
+<!-- BOTÓN WHATSAPP FLOTANTE                        -->
 <!-- ============================================= -->
 <a href="https://wa.me/5491123456789?text=Hola%20Staff%20J.F%20Unlock%20-%20Leer%20Reglas" class="float-whatsapp" target="_blank">
     <i class="fab fa-whatsapp"></i>
 </a>
 
 <!-- ============================================= -->
-<!-- BLOQUE: SCRIPT DE PROTECCIÓN                   -->
+<!-- PROTECCIÓN                                     -->
 <!-- ============================================= -->
 <script>
     (function() {
@@ -831,7 +814,7 @@
                 e.preventDefault();
             }
         });
-        console.log("Protección activada - Solo la palabra 'Prohibido' aparece en rojo.");
+        console.log("Protección activada - Diseño moderno de bienvenida implementado.");
     })();
 </script>
 </body>
