@@ -386,11 +386,14 @@
             .staff-card {
                 width: 240px;
             }
+            /* En escritorio las tarjetas se mantienen como están (una por fila flexible pero centradas) */
+            .staff-grid {
+                justify-content: center;
+            }
         }
 
         /* ============================================= */
-        /* BLOQUE: MÓVIL ULTRAFINO (redimensionado compacto y elegante) */
-        /* NO SE BORRA NADA, SOLO SE AJUSTAN PADDINGS Y TAMAÑOS */
+        /* BLOQUE: MÓVIL ULTRAFINO - SECCIÓN STAFF EN 2 COLUMNAS HORIZONTALES */
         /* ============================================= */
         @media (max-width: 720px) {
             .container {
@@ -460,35 +463,68 @@
             .btn-youtube i {
                 font-size: 1.4rem;
             }
+            
+            /* ========================================= */
+            /* SECCIÓN STAFF: ULTRA FINA + 2 COLUMNAS    */
+            /* ========================================= */
             .staff-section {
-                padding: 1rem 0.5rem;
-                margin: 1.5rem 0;
+                padding: 0.8rem 0.5rem;
+                margin: 1.2rem 0;
+                border-radius: 1.5rem;
             }
             .staff-title {
-                font-size: 1.3rem;
-                margin-bottom: 0.5rem;
+                font-size: 1.2rem;
+                margin-bottom: 0.8rem;
             }
+            /* Grid en móvil: 2 columnas horizontales */
             .staff-grid {
-                gap: 1rem;
-                margin: 1rem 0 0.5rem;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.7rem;
+                margin: 0.8rem 0 0.5rem;
+                justify-items: center;
+                align-items: stretch;
             }
+            /* Tarjetas ultrafinas, ocupan todo el ancho de su celda */
             .staff-card {
                 width: 100%;
-                max-width: 210px;
-                padding: 0.8rem 1rem;
+                max-width: none;
+                padding: 0.6rem 0.5rem;
+                border-radius: 1.2rem;
+                margin: 0;
             }
             .staff-card h4 {
-                font-size: 1rem;
+                font-size: 0.85rem;
+                margin: 0.2rem 0 0.1rem;
+                word-break: break-word;
             }
             .staff-role {
-                font-size: 0.65rem;
-                padding: 0.15rem 0.6rem;
+                font-size: 0.55rem;
+                padding: 0.1rem 0.4rem;
+                margin-bottom: 0.3rem;
             }
             .staff-card .wa-staff-btn {
-                padding: 0.3rem 0.8rem;
-                font-size: 0.7rem;
-                gap: 5px;
+                padding: 0.25rem 0.5rem;
+                font-size: 0.6rem;
+                gap: 4px;
+                margin-top: 0.3rem;
             }
+            .staff-card .wa-staff-btn i {
+                font-size: 0.7rem;
+            }
+            /* Icono corona más pequeño en móvil */
+            .staff-card .fa-crown, .founder-card i:first-child {
+                font-size: 1.3rem !important;
+            }
+            .staff-card i.fa-user-shield {
+                font-size: 1.2rem;
+            }
+            /* Ajuste texto de párrafo final del staff */
+            .staff-section > p {
+                font-size: 0.6rem;
+                margin-top: 0.6rem;
+            }
+            
             footer {
                 margin-top: 1.5rem;
                 font-size: 0.7rem;
@@ -502,6 +538,7 @@
                 right: 18px;
             }
         }
+        
         /* Pantallas extra pequeñas (menos de 480px) ajuste adicional sin borrar nada */
         @media (max-width: 480px) {
             .container {
@@ -510,11 +547,19 @@
             h1 {
                 font-size: 1.5rem;
             }
-            .staff-card {
-                max-width: 180px;
-            }
             .rule-text {
                 font-size: 0.8rem;
+            }
+            /* En móvil muy pequeño, mantener 2 columnas pero más compacto */
+            .staff-card h4 {
+                font-size: 0.75rem;
+            }
+            .staff-role {
+                font-size: 0.5rem;
+            }
+            .staff-card .wa-staff-btn {
+                font-size: 0.55rem;
+                padding: 0.2rem 0.4rem;
             }
         }
     </style>
@@ -753,7 +798,7 @@
 
         // 6. El zoom táctil o con teclado queda permitido: no se bloquea Ctrl+ + / Ctrl -  
         // Tampoco se bloquea el gesto táctil de pellizco, gracias a user-scalable=yes en meta viewport.
-        console.log("Protección activada: clic derecho y copia deshabilitados. Zoom permitido. Móvil con diseño ultrafino.");
+        console.log("Protección activada: clic derecho y copia deshabilitados. Zoom permitido. Móvil: staff ultrafino en 2 columnas.");
     })();
 </script>
 </body>
