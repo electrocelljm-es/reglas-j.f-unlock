@@ -2,7 +2,8 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <!-- viewport mejorado para móvil ultrafino pero conservando zoom -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>J.F UNLOCK SOLO TÉCNICOS | Reglas Oficiales</title>
     <!-- Google Fonts + Font Awesome -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
@@ -368,14 +369,153 @@
             padding-top: 2rem;
         }
 
+        /* ======================================================= */
+        /* BLOQUE: ESCRITORIO - MANTIENE EXACTAMENTE EL DISEÑO ORIGINAL */
+        /* ======================================================= */
+        @media (min-width: 721px) {
+            /* Todo se conserva igual que el original */
+            .container {
+                padding: 2rem 1.5rem 5rem;
+            }
+            h1 {
+                font-size: 2.7rem;
+            }
+            .rule-item {
+                padding: 1rem 1.5rem;
+            }
+            .staff-card {
+                width: 240px;
+            }
+        }
+
         /* ============================================= */
-        /* BLOQUE: MEDIA QUERIES (RESPONSIVE)            */
+        /* BLOQUE: MÓVIL ULTRAFINO (redimensionado compacto y elegante) */
+        /* NO SE BORRA NADA, SOLO SE AJUSTAN PADDINGS Y TAMAÑOS */
         /* ============================================= */
         @media (max-width: 720px) {
-            .container { padding: 1rem; }
-            h1 { font-size: 1.8rem; }
-            .rule-item { padding: 0.8rem 1rem; }
-            .staff-card { width: 100%; max-width: 260px; }
+            .container {
+                padding: 0.75rem 0.9rem 3rem;
+            }
+            .hero {
+                margin-bottom: 1.5rem;
+                padding: 0.8rem 0.5rem;
+                border-radius: 2rem;
+            }
+            .badge-global {
+                font-size: 0.65rem;
+                padding: 0.2rem 0.7rem;
+                margin-bottom: 0.8rem;
+            }
+            h1 {
+                font-size: 1.7rem;
+                letter-spacing: -0.3px;
+            }
+            .subtitle {
+                font-size: 0.9rem;
+                padding: 0.2rem 1rem;
+            }
+            .welcome-card {
+                padding: 1rem 1.2rem;
+                margin: 1rem 0;
+                border-radius: 1.5rem;
+            }
+            .welcome-text {
+                font-size: 0.9rem;
+            }
+            .welcome-text p {
+                margin-bottom: 0.6rem;
+            }
+            .staff-note {
+                padding: 0.7rem 1rem;
+                font-size: 0.85rem;
+            }
+            h2 {
+                font-size: 1.4rem !important;
+            }
+            .rules-grid {
+                gap: 0.7rem;
+                margin: 1.2rem 0 1.5rem;
+            }
+            .rule-item {
+                padding: 0.7rem 1rem;
+                gap: 0.7rem;
+                border-radius: 1.2rem;
+            }
+            .rule-icon {
+                font-size: 1.3rem;
+                min-width: 1.6rem;
+            }
+            .rule-text {
+                font-size: 0.85rem;
+                line-height: 1.35;
+            }
+            .youtube-btn-container {
+                margin: 1.2rem 0 1.5rem;
+            }
+            .btn-youtube {
+                padding: 0.65rem 1.4rem;
+                font-size: 1rem;
+                gap: 8px;
+            }
+            .btn-youtube i {
+                font-size: 1.4rem;
+            }
+            .staff-section {
+                padding: 1rem 0.5rem;
+                margin: 1.5rem 0;
+            }
+            .staff-title {
+                font-size: 1.3rem;
+                margin-bottom: 0.5rem;
+            }
+            .staff-grid {
+                gap: 1rem;
+                margin: 1rem 0 0.5rem;
+            }
+            .staff-card {
+                width: 100%;
+                max-width: 210px;
+                padding: 0.8rem 1rem;
+            }
+            .staff-card h4 {
+                font-size: 1rem;
+            }
+            .staff-role {
+                font-size: 0.65rem;
+                padding: 0.15rem 0.6rem;
+            }
+            .staff-card .wa-staff-btn {
+                padding: 0.3rem 0.8rem;
+                font-size: 0.7rem;
+                gap: 5px;
+            }
+            footer {
+                margin-top: 1.5rem;
+                font-size: 0.7rem;
+                padding-top: 1rem;
+            }
+            .float-whatsapp {
+                width: 50px;
+                height: 50px;
+                font-size: 26px;
+                bottom: 18px;
+                right: 18px;
+            }
+        }
+        /* Pantallas extra pequeñas (menos de 480px) ajuste adicional sin borrar nada */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0.6rem 0.7rem 2rem;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+            .staff-card {
+                max-width: 180px;
+            }
+            .rule-text {
+                font-size: 0.8rem;
+            }
         }
     </style>
 </head>
@@ -498,39 +638,39 @@
     <!-- BLOQUE: STAFF (FUNDADOR + CO-ADMINISTRADORES)  -->
     <!-- ============================================= -->
     <div class="staff-section">
-        <div class="staff-title"><i class="fab fa-whatsapp"></i> Equipo Directivo & Staff Autorizado</div>
+        <div class="staff-title"><i class="fab fa-whatsapp"></i> Propietario & Staff Autorizado</div>
         <div class="staff-grid">
             <!-- Fundador y Admin principal @J.F Unlock -->
             <div class="staff-card founder-card">
                 <i class="fas fa-crown" style="font-size: 2rem; color: gold;"></i>
                 <h4>J.F Unlock</h4>
                 <div class="staff-role">Fundador & Administrador Principal</div>
-                <a href="https://wa.me/5491123456789?text=Hola%20J.F%20Unlock%20-%20Consulta%20Staff" target="_blank" class="wa-staff-btn"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="https://wa.me/18299778417?text=Hola%20J.F%20Unlock%20-%20Consulta%20Staff" target="_blank" class="wa-staff-btn"><i class="fab fa-whatsapp"></i> WhatsApp</a>
             </div>
-            <!-- Co-Administradores con sus respectivos nombres y botón -->
+            <!-- Co-Administradores con sus respectivos nombres y botón (números corregidos formato válido) -->
             <div class="staff-card">
                 <i class="fas fa-user-shield"></i>
                 <h4>@electrocelljm.es</h4>
                 <div class="staff-role">Co-Administrador</div>
-                <a href="https://wa.me/5491123456780?text=Hola%20electrocelljm.es%20Staff" target="_blank" class="wa-staff-btn"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="https://wa.me/50370976447?text=Hola%20electrocelljm.es%20Staff" target="_blank" class="wa-staff-btn"><i class="fab fa-whatsapp"></i> WhatsApp</a>
             </div>
             <div class="staff-card">
                 <i class="fas fa-user-shield"></i>
                 <h4>@Edisson</h4>
                 <div class="staff-role">Co-Administrador</div>
-                <a href="https://wa.me/5491123456781?text=Hola%20Edisson%20Staff" target="_blank" class="wa-staff-btn"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="https://wa.me/573146004693?text=Hola%20Edisson%20Staff" target="_blank" class="wa-staff-btn"><i class="fab fa-whatsapp"></i> WhatsApp</a>
             </div>
             <div class="staff-card">
                 <i class="fas fa-user-shield"></i>
                 <h4>@Jose Ariel</h4>
                 <div class="staff-role">Co-Administrador</div>
-                <a href="https://wa.me/5491123456782?text=Hola%20Jose%20Ariel" target="_blank" class="wa-staff-btn"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="https://wa.me/18293500002?text=Hola%20Jose%20Ariel" target="_blank" class="wa-staff-btn"><i class="fab fa-whatsapp"></i> WhatsApp</a>
             </div>
             <div class="staff-card">
                 <i class="fas fa-user-shield"></i>
                 <h4>@Miguel</h4>
                 <div class="staff-role">Co-Administrador</div>
-                <a href="https://wa.me/5491123456783?text=Hola%20Miguel%20Staff" target="_blank" class="wa-staff-btn"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="https://wa.me/18496332695?text=Hola%20Miguel%20Staff" target="_blank" class="wa-staff-btn"><i class="fab fa-whatsapp"></i> WhatsApp</a>
             </div>
         </div>
         <p style="text-align: center; font-size: 0.75rem; margin-top: 1rem;"><i class="fas fa-shield-alt"></i> Solo el Staff Autorizado está facultado para ofrecer servicios. Contacta directamente por WhatsApp.</p>
@@ -613,7 +753,7 @@
 
         // 6. El zoom táctil o con teclado queda permitido: no se bloquea Ctrl+ + / Ctrl -  
         // Tampoco se bloquea el gesto táctil de pellizco, gracias a user-scalable=yes en meta viewport.
-        console.log("Protección activada: clic derecho y copia deshabilitados. Zoom permitido.");
+        console.log("Protección activada: clic derecho y copia deshabilitados. Zoom permitido. Móvil con diseño ultrafino.");
     })();
 </script>
 </body>
